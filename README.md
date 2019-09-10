@@ -1,3 +1,3 @@
-# code-highlight
+# code-sample-highlight
 
-> code进行美化、高亮展示。
+> 简易版code美化、高亮展示。

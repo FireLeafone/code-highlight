@@ -1,5 +1,5 @@
 {
-  "name": "code-highlight",
+  "name": "code-sample-highlight",
   "version": "0.0.1",
   "description": "code highlight",
   "main": "lib/codeHighlight.js",
@@ -30,7 +30,8 @@
   },
   "scripts": {
     "test": "eslint --fix --ext .js src",
-    "build": "node script/build.js"
+    "build": "node script/build.js",
+    "release": "npm run test && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
