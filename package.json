@@ -1,0 +1,45 @@
+{
+  "name": "code-highlight",
+  "version": "0.0.1",
+  "description": "code highlight",
+  "main": "lib/codeHighlight.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "webpack-cli": "^3.3.8",
+    "webpack": "^4.39.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "chalk": "^2.4.2",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.3.0",
+    "eslint-cli": "^1.1.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "ora": "^3.4.0",
+    "postcss-loader": "^3.0.0",
+    "rimraf": "^3.0.0",
+    "sass-loader": "^8.0.0"
+  },
+  "scripts": {
+    "test": "eslint --fix --ext .js src",
+    "build": "node script/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FireLeafone/code-highlight.git"
+  },
+  "author": "NARUTOne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FireLeafone/code-highlight/issues"
+  },
+  "homepage": "https://github.com/FireLeafone/code-highlight#readme"
+}
