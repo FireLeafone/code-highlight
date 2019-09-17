@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>code highlight demo</title>
+  <link rel="stylesheet" href="../lib/theme/theme-dark.css">
+  <style>
+    .code-demo {
+      height: 500px;
+      overflow: auto;
+      padding: 8px;
+      margin-top: 16px;
+      border: 1px solid #c3c3c3;
+      border-radius: 6px;
+    }
+    select {
+      min-width: 80px;
+      padding: 4px 8px;
+    }
+  </style>
+</head>
+<body>
+  <h3>代码美化高亮</h3>
+  <select id="lang">
+    <option value="">请选择语言</option>
+    <option value="markup">html</option>
+    <option value="css">css</option>
+    <option value="js">js</option>
+    <option value="jsx">jsx</option>
+  </select>
+  <div class="code-demo">
+    <div id="code"></div>
+  </div>
+</body>
+<script src="../lib/codeHighlight.js"></script>
+<!-- <script src="./prism.js"></script> -->
+<script src="./code-data.js"></script>
+<script>
+  var langSel = document.getElementById("lang");
+  var preBox = document.getElementById("code");
+  langSel.addEventListener("change", (e) => {
+    var lang = e.target.value;
+    if(!lang) return;
+    var code = codesList[lang];
+    var highCode = codeHighlight(code, lang, {theme: "dark"})
+
+    // var highCode = Prism.highlight(code, Prism.languages[lang], lang)
+    // console.log(highCode);
+    preBox.innerHTML = highCode;
+  });
+</script>
+</html>

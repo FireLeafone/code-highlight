@@ -3,16 +3,50 @@
 /**
  * webpack build config
  */
+var path = require("path");
+var fs = require("fs");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var webpack = require("webpack");
 var CONFIG = require("./config");
 var utils = require("./utils");
 
+// 主题路径
+const THEME_PATH = './src/themes';
+const resolveToThemeStaticPath = fileName => path.resolve(THEME_PATH, fileName);
+const themeFileNameSet = fs.readdirSync(path.resolve(THEME_PATH));
+const getThemeName = fileName => `theme-${path.basename(fileName, path.extname(fileName))}`;
+function recursiveIssuer(m) {
+  if (m.issuer) {
+    return recursiveIssuer(m.issuer);
+  } else if (m.name) {
+    return m.name;
+  } else {
+    return false;
+  }
+}
+
+const cacheGroups = {};
+const themeEnterSet = {};
+
+themeFileNameSet.forEach(fileName => {
+  const themeName = getThemeName(fileName);
+  themeEnterSet[themeName] = resolveToThemeStaticPath(fileName);
+  cacheGroups[themeName] = {
+    name: themeName,
+    test: (m, c, entry = themeName) => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+    chunks: 'all',
+    enforce: true
+  };
+});
+
 var baseConfig = {
   mode: "production",
-  entry: utils.resolve("src/index"),
+  entry: {
+    codeHighlight: utils.resolve("src/index"),
+    ...themeEnterSet
+  },
   output: {
-    filename: "codeHighlight.js",
+    filename: "[name].js",
     path: CONFIG.buildPath,
     library: "codeHighlight",
     libraryTarget: "umd",
@@ -55,10 +89,15 @@ var baseConfig = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({ // css拆分
-      chunkFilename: "theme/css/[name].css",
-      filename: "theme/css/[name].css"
+      chunkFilename: "theme/[name].css",
+      filename: "theme/[name].css"
     }),
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: cacheGroups
+    }
+  }
 };
 
 module.exports = baseConfig;

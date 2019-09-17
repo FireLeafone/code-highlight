@@ -1,0 +1,35 @@
+@import "../styles/base.scss";
+@import "../styles/variable.scss";
+
+.pre-light {
+  background-color: rgba(255, 255, 255, 1);
+  color: #333;
+
+  .comment {
+    color: $comment_color;
+  }
+  .string, .attr-value {
+    color: $attrValue_color;
+  }
+  .attr-name {
+    color: $attrName_color;
+  }
+  .selector, .char, .builtin {
+    color: $selector_color;
+  }
+  .url, .variable {
+   color: $url_color;
+  }
+  .property, .important, .punctuation, .doctype, .regex {
+    color: $property_color;
+  }
+  .keyword, .nb, .class-keyword {
+    color: $kwd_color;
+  }
+  .tag, .function {
+    color: $tag_color;
+  }
+  .number, .boolean, .property, .constant, .symbol  {
+    color: $num_color;
+  }
+}

@@ -19,6 +19,10 @@ module.exports = function (api) {
 
   const plugins = [
     "@babel/plugin-transform-runtime",
+    // ["prismjs", {
+    //   "languages": ["javascript", "css", "markup"],
+    //   "plugins": ["line-numbers"]
+    // }]
   ];
 
   return {
