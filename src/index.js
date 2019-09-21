@@ -59,7 +59,7 @@ function parse(source, lang, config) {
   }, config);
 
   const codeHtml = highlight(source, languages[lang], lang);
-  const className = `code-highlight pre-${props.theme || "light"}` + (props.transparent ? "pre-transparent" : "");
+  const className = `code-highlight pre-${props.theme || "light"} ` + (props.transparent ? "pre-transparent " : "");
   return `<pre class="${className}">${codeHtml}</pre>`;
 }
 
