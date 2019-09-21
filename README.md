@@ -1,4 +1,4 @@
-# code-prism-beautify
+# code-prism-highlight
 
 > 基于 prismJS 简易版code美化、高亮展示。
 
